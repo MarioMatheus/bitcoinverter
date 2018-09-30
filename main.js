@@ -9,3 +9,5 @@ document.body.onload = async function() {
   await nav.componentOnReady();
   nav.root = 'home-page';
 };
+
+
