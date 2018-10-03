@@ -25,8 +25,8 @@ request.onload = function() {
 };
 
 request.timeout = 2000;
-request.ontimeout = function() {
-  console.log("On Timeout");
+request.onerror = function() {
+  console.log("On Error");
   let currencies = localStorage.currencies;
   if(currencies) {
     app.currencies = currencies;
@@ -56,4 +56,7 @@ document.body.onload = async function() {
   nav.root = 'home-page';
 };
 
-
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./service-worker.js')
+    .then(console.log('ServiceWorker Registered'));
+}
