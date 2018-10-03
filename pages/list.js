@@ -1,6 +1,6 @@
 export var listPage = {
   
-  definePage: function() {
+  definePage: function(app) {
     customElements.define("list-page", class extends HTMLElement {
 
       constructor() {
@@ -47,28 +47,12 @@ export var listPage = {
 
 
       setTableContent() {
-        this.getCurrencies((data) => {
-          for(const currency in data) {
-            if(data.hasOwnProperty(currency)) {
-              const element = data[currency];
-              this.addItemAtTable(currency, element['15m']) ;
-            }
+        for (const currency in app.currencies) {
+          if (app.currencies.hasOwnProperty(currency)) {
+            const element = app.currencies[currency];
+            this.addItemAtTable(currency, element);
           }
-        });
-      }
-
-
-      getCurrencies(completion) {
-        let request = new XMLHttpRequest();
-        request.onload = function() {
-          let data = JSON.parse(this.response); 
-          if(request.status >= 200 && request.status < 400) {
-            completion(data);
-          }
-        };
-
-        request.open('GET', 'https://blockchain.info/ticker', true);
-        request.send();
+        }
       }
 
     });
