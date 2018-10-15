@@ -14,7 +14,7 @@ request.onload = function() {
       const element = data[currency];
       app.currencies[currency] = element['15m'];
     }
-    localStorage.currencies = app.currencies;
+    localStorage.currencies = JSON.stringify(app.currencies);
     if(localStorage.optionSelected) {
       app.optionSelected = localStorage.optionSelected;
     }
@@ -29,7 +29,7 @@ request.onerror = function() {
   console.log("On Error");
   let currencies = localStorage.currencies;
   if(currencies) {
-    app.currencies = currencies;
+    app.currencies = JSON.parse(currencies);
     app.optionSelected = localStorage.optionSelected;
   } else {
     app.currencies = {
@@ -45,6 +45,9 @@ request.onerror = function() {
         'TWD': 201634.89
     }
   }
+
+  homePage.definePage(app);
+  listPage.definePage(app);
 }
 
 request.open('GET', 'https://blockchain.info/ticker', true);
