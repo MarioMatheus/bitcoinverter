@@ -44,9 +44,7 @@ export var homePage = {
               <ion-col size="2"></ion-col>
             </ion-row>
             <ion-row>
-              <ion-col size="2"></ion-col>
               <ion-label style="text-align: center; font-size: 12vw;"></ion-label>
-              <ion-col size="2"></ion-col>
             </ion-row>
             <ion-row>
               <ion-col size="2"></ion-col>
@@ -95,7 +93,7 @@ export var homePage = {
         let currency = document.querySelector('ion-select').value;
         let bitcoinValue = app.currencies[currency];
 
-        document.querySelector('ion-label').textContent = `₿ ${(number/bitcoinValue).toFixed(4)}`;
+        document.querySelector('ion-label').textContent = `${(number/bitcoinValue).toFixed(4)} BTC`;
 
         localStorage.optionSelected = document.querySelector('ion-select').value;
       }
