@@ -20,4 +20,4 @@ The Bitcoinverter uses the Blockchain Query API: https://blockchain.info/ticker 
 
 ## License
 
-O projeto é licenciado pela MIT License - veja a [LICENSE.md](LICENSE) para mais detalhes
+The project is licensed by the MIT License - see [LICENSE.md](LICENSE) for more details.
